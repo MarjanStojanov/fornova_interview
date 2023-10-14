@@ -5,7 +5,7 @@ App consisting of two parts (FastAPI for backend and Flask for frontend).
 ## Running the app
 
 ### Dockerized approach
-1. cd into root directory ( **INTERVIEW/** )
+1. cd into root directory (where **docker-compose.yaml** is located)
 2. `docker compose up --build`
 3. visit _`http://localhost:3000/hotels`_
 
