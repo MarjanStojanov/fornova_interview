@@ -4,9 +4,10 @@ from fastapi.responses import JSONResponse
 
 def _include_routers(app):
     from hotel_routes import hotel_router
+
     app.include_router(hotel_router, prefix="/hotels", tags=["hotels"])
 
-    return  app
+    return app
 
 
 def _register_healthcheck(app):
@@ -33,7 +34,6 @@ def _register_errorhandlers(app):
         )
 
     return app
-
 
 
 def create_app() -> FastAPI:

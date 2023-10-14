@@ -54,4 +54,3 @@ def browse_hotels():
         limit=limit,
         context="browse",
     )
- 

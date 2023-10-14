@@ -10,11 +10,12 @@ def parse_csv(filename: str) -> list[dict]:
         next(file_reader)  # skip headers
 
         for row in file_reader:
-            formatted_data.append({
-                "id": row[0],
-                "name": row[1],
-                "city": row[2],
-                "country": row[3],
+            formatted_data.append(
+                {
+                    "id": row[0],
+                    "name": row[1],
+                    "city": row[2],
+                    "country": row[3],
                 }
             )
 

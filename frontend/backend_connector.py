@@ -5,6 +5,7 @@ from config import Config
 
 class BackendConnector:
     """layer that is in charge of making any third party API calls"""
+
     def __init__(self) -> None:
         self.session = session()
 

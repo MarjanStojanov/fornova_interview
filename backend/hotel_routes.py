@@ -16,5 +16,7 @@ def browse_hotels(api_key: str = Depends(get_api_key), page: int = 1, limit: int
 
 @hotel_router.post("/search")
 def search_hotels(payload: SearchSchema, api_key: str = Depends(get_api_key)):
-    results = HotelService().search(keyword=payload.keyword, page=payload.page, limit=payload.limit)
+    results = HotelService().search(
+        keyword=payload.keyword, page=payload.page, limit=payload.limit
+    )
     return {"hotels": results}

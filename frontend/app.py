@@ -14,6 +14,7 @@ def _load_config(app: Flask):
 
 def _register_blueprints(app: Flask):
     from hotel_routes import hotels_bp
+
     app.register_blueprint(hotels_bp)
     return app
 
@@ -63,4 +64,3 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run()
-
