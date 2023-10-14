@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    {% if context == "search" %}
+        <h3>Search results including "{{ keyword }}"</h3>
+    {%else %}
+        <h3>All Available Hotels</h3>
+    {% endif %}
+
+        <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+        </thead>
+        <tbody>
+            {% for res in results["hotels"] %}
+                <tr>
+                    <td>{{ res.id }}</td>
+                    <td>{{ res.name }}</td>
+                    <td>{{ res.city }}</td>
+                    <td>{{ res.country }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+
+    {% if current_page > 1 %}
+        <form action="" method={% if context == "search" %} "POST" {% else %} "GET" {% endif %}>
+            <input type="text" name="page" value="{{ current_page - 1 }}" hidden>
+            <input type="text" name="limit" value="{{ limit }}" hidden>
+            {% if context == "search" %}
+                <input type="text" name="keyword" value="{{ keyword }}" hidden>
+            {% endif %}
+            <button type="submit">Prev</button>
+        </form>
+    {% endif %}
+
+    {% if results["hotels"] | length == limit %}
+        <form action="" method={% if context == "search" %} "POST" {% else %} "GET" {% endif %}>
+            <input type="text" name="page" value="{{ current_page + 1 }}" hidden>
+            <input type="text" name="limit" value="{{ limit }}" hidden>
+            {% if context == "search" %}
+                <input type="text" name="keyword" value="{{ keyword }}" hidden>
+            {% endif %}
+            <button type="submit">Next</button>
+        </form>
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
+    <a href="{{ url_for('hotels.index') }}">Homepage</a>
+
+</body>
+</html>

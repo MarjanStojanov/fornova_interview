@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Search</title>
+</head>
+<body>
+    <h3>Search for hotels</h3>
+    <p>Any hotel that contains your search term in name, city or country will be listed</p>
+    <p>Search term needs to be at least 3 characters long</p>
+    <form action="{{ url_for('hotels.search_hotels') }}" method="POST">
+        <label for="keyword">Keyword</label>
+        <br>
+        <input type="text" name="keyword" placeholder="inn" required>
+        <br>
+        <label for="keyword">How many results per page?</label>
+        <br>
+        <input type="text" name="limit" placeholder="10">
+        <br>
+        <br>
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <a href="{{ url_for('hotels.index') }}">Homepage</a>
+</body>
+</html>
