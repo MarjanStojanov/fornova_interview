@@ -23,4 +23,4 @@ App consisting of two parts (FastAPI for backend and Flask for frontend).
 10. visit _`http://localhost:5000/hotels`_
 
 ### Showcase:
-![Hotels Browser showcase](https://github.com/MarjanStojanov/fornova_interview/assets/38865278/38b5d75f-32dd-4217-893f-7ba8b9c1e6b2)
+![ezgif com-video-to-gif(1)](https://github.com/MarjanStojanov/fornova_interview/assets/38865278/2993062f-0834-4b7a-befa-44dd640887d0)
