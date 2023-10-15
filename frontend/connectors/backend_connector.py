@@ -7,11 +7,12 @@ class BackendConnector:
     """layer that is in charge of making any third party API calls"""
 
     def __init__(self) -> None:
-        self.session = session()
-
         config = Config()
         self.host = config.BACKEND_HOST
         self.api_key = config.BACKEND_API_KEY
+
+        self.session = session()
+        self.session.headers = self.headers()
 
     def headers(self):
         return {
@@ -19,14 +20,13 @@ class BackendConnector:
             "X-API-KEY": self.api_key,
         }
 
-    def browse(self, page=1, limit=10):
+    def browse(self, page, limit):
         response = self.session.get(
             url=f"{self.host}/hotels/browse",
             params={
                 "page": page,
                 "limit": limit,
             },
-            headers=self.headers(),
         )
         if response.status_code != 200:
             raise ConnectorError(response.json())
@@ -41,7 +41,6 @@ class BackendConnector:
                 "page": page,
                 "limit": limit,
             },
-            headers=self.headers(),
         )
 
         if response.status_code != 200:

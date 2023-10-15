@@ -1,6 +1,7 @@
 import sys
 import traceback
 
+from dotenv import load_dotenv
 from flask import Flask
 
 from config import Config
@@ -8,12 +9,14 @@ from errors import ConnectorError
 
 
 def _load_config(app: Flask):
+    load_dotenv()
+
     app.config.from_object(Config)
     return app
 
 
 def _register_blueprints(app: Flask):
-    from hotel_routes import hotels_bp
+    from views.hotel_routes import hotels_bp
 
     app.register_blueprint(hotels_bp)
     return app
