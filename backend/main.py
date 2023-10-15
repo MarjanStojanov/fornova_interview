@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 
 
 def _include_routers(app):
-    from hotel_routes import hotel_router
+    from apis.hotel_routes import hotel_router
 
     app.include_router(hotel_router, prefix="/hotels", tags=["hotels"])
 

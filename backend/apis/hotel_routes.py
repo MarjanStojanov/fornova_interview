@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends
 
 from auth import get_api_key
-from hotel_service import HotelService
-from models import SearchSchema
+from services.hotel_service import HotelService
+from schemas.search_schema import SearchSchema
 
 
 hotel_router = APIRouter()
