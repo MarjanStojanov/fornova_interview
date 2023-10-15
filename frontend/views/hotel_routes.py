@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, request, render_template, render_template_string
 from services.hotel_service import HotelService
 
 
@@ -26,7 +26,10 @@ def search_hotels():
     limit = int(request.form.get("limit") or 10)
     keyword = request.form.get("keyword", "").strip()
     if len(keyword) < 3:
-        return jsonify({"error": "keyword must be at least 3 characters long"}), 400
+        return render_template(
+            "hotel_search.html",
+            error="Search term must be at least 3 characters long",
+        )
 
     results = HotelService().search(keyword=keyword, page=page, limit=limit)
 

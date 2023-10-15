@@ -7,14 +7,18 @@
     <style>
         table, td, th {
             border: 1px solid black;
+            padding: 5px;
+        }
+        #form-prev, #form-next {
+            display: inline-block;
         }
     </style>
 </head>
 <body>
     {% if context == "search" %}
-        <h3>Search results including "{{ keyword }}"</h3>
+        <h2>Search results including "{{ keyword }}"</h2>
     {%else %}
-        <h3>All Available Hotels</h3>
+        <h2>All Available Hotels</h2>
     {% endif %}
 
         <table>
@@ -38,7 +42,7 @@
     <br>
 
     {% if current_page > 1 %}
-        <form action="" method={% if context == "search" %} "POST" {% else %} "GET" {% endif %}>
+        <form action="" method={% if context == "search" %} "POST" {% else %} "GET" {% endif %} id="form-prev">
             <input type="text" name="page" value="{{ current_page - 1 }}" hidden>
             <input type="text" name="limit" value="{{ limit }}" hidden>
             {% if context == "search" %}
@@ -49,7 +53,7 @@
     {% endif %}
 
     {% if results["hotels"] | length == limit %}
-        <form action="" method={% if context == "search" %} "POST" {% else %} "GET" {% endif %}>
+        <form action="" method={% if context == "search" %} "POST" {% else %} "GET" {% endif %} id="form-next">
             <input type="text" name="page" value="{{ current_page + 1 }}" hidden>
             <input type="text" name="limit" value="{{ limit }}" hidden>
             {% if context == "search" %}
@@ -62,6 +66,11 @@
     <br>
     <br>
     <br>
+    {% if context == "search" %}
+        <a href="{{ url_for('hotels.render_search_hotels') }}">Back to Search</a>
+        <br>
+    {% endif %}
+
     <a href="{{ url_for('hotels.index') }}">Homepage</a>
 
 </body>
