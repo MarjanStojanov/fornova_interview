@@ -5,7 +5,7 @@ App consisting of two parts (FastAPI for backend and Flask for frontend).
 ## Running the app
 
 ### Dockerized approach
-1. cd into root directory ( **INTERVIEW/** )
+1. cd into root directory (where **docker-compose.yaml** is located)
 2. `docker compose up --build`
 3. visit _`http://localhost:3000/hotels`_
 
@@ -23,4 +23,4 @@ App consisting of two parts (FastAPI for backend and Flask for frontend).
 10. visit _`http://localhost:5000/hotels`_
 
 ### Showcase:
-![ezgif com-video-to-gif](https://github.com/MarjanStojanov/fornova_interview/assets/38865278/6a80b192-11f1-4f96-9b4f-c4e24ef12093)
+![Hotels Browser showcase](https://github.com/MarjanStojanov/fornova_interview/assets/38865278/38b5d75f-32dd-4217-893f-7ba8b9c1e6b2)
